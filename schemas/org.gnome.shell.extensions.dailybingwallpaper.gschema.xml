@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.dailybingwallpaper" path="/org/gnome/shell/extensions/dailybingwallpaper/">
+    <key name="last-update-timestamp" type="s">
+      <default>""</default>
+      <summary>Last wallpaper update timestamp</summary>
+      <description>ISO timestamp of the last automatic wallpaper check.</description>
+    </key>
+    <key name="last-wallpaper-copyright" type="s">
+      <default>""</default>
+      <summary>Last wallpaper copyright</summary>
+      <description>The copyright notice of the last wallpaper downloaded.</description>
+    </key>
+    <key name="last-wallpaper-url" type="s">
+      <default>""</default>
+      <summary>Last wallpaper URL</summary>
+      <description>The URL of the last wallpaper downloaded.</description>
+    </key>
+    <key name="region" type="s">
+      <default>"en-US"</default>
+      <summary>Region setting</summary>
+      <description>The region to use when downloading the wallpaper.</description>
+    </key>
+    <key name="resolution" type="s">
+      <default>"UHD"</default>
+      <summary>Wallpaper resolution</summary>
+      <description>The wallpaper resolution to download.</description>
+    </key>
+  </schema>
+</schemalist>
