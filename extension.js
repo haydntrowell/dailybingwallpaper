@@ -7,12 +7,13 @@ const WALLPAPER_PATH = GLib.build_filenamev([GLib.get_user_cache_dir(), 'bing_wa
 
 export default class BingWallpaperExtension extends Extension {
     #settings = null;
-    #httpSession = new Soup.Session();
+    #httpSession = null;
     #regionChangedHandlerId = 0;
     #resolutionChangedHandlerId = 0;
 
     enable() {
         this.#settings = this.getSettings();
+        this.#httpSession = new Soup.Session();
 
         this.#regionChangedHandlerId = this.#settings.connect('changed::region', () => this.#updateWallpaper(true));
         this.#resolutionChangedHandlerId = this.#settings.connect('changed::resolution', () => this.#updateWallpaper(true));
@@ -81,25 +82,31 @@ export default class BingWallpaperExtension extends Extension {
                         this.#settings.set_string('last-wallpaper-url', url);
                         this.#settings.set_string('last-update-timestamp', now.toISOString());
                     } catch (error) {
-                        console.error("[BING WALLPAPER] Failed to save wallpaper:", error);
+                        console.error("[DAILY BING WALLPAPER] Failed to save wallpaper:", error);
                     }
                 }
             );
         } catch (error) {
-            console.error("[BING WALLPAPER] Wallpaper update failed:", error);
+            console.error("[DAILY BING WALLPAPER] Wallpaper update failed:", error);
         }
     }
 
     disable() {
         if (this.#settings) {
-            if (this.#regionChangedHandlerId)
+            if (this.#regionChangedHandlerId) {
                 this.#settings.disconnect(this.#regionChangedHandlerId);
-            if (this.#resolutionChangedHandlerId)
+                this.#regionChangedHandlerId = 0;
+            }
+            if (this.#resolutionChangedHandlerId) {
                 this.#settings.disconnect(this.#resolutionChangedHandlerId);
+                this.#resolutionChangedHandlerId = 0;
+            }
+            this.#settings = null;
         }
-
-        this.#settings = null;
-        this.#regionChangedHandlerId = 0;
-        this.#resolutionChangedHandlerId = 0;
+        
+        if (this.#httpSession) {
+            this.#httpSession.abort();
+            this.#httpSession = null;
+        }
     }
 }
