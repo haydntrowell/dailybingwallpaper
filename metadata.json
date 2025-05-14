@@ -1,10 +1,10 @@
 {
     "uuid": "dailybingwallpaper@trowell.net",
     "name": "Daily Bing Wallpaper",
-    "description": "Automatically sets your desktop wallpaper to Bing's image of the day.\n\nDisclaimer: \"Bing\" is a trademark of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft. All images remain the property of their respective copyright holders and are presumed to be intended for personal, non-commercial wallpaper use only. No images are redistributed or modified by this extension.",
+    "description": "Simple, unobtrusive GNOME extension that automatically sets the desktop wallpaper to Bing's image of the day. No panel applets, no popups, no extraneous features. Works efficiently in the background without requiring user interaction.\n\nDisclaimer: \"Bing\" is a trademark of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft. All images remain the property of their respective copyright holders and are presumed to be intended for personal, non-commercial wallpaper use only. No images are redistributed or modified by this extension.",
     "shell-version": ["48"],
     "settings-schema": "org.gnome.shell.extensions.dailybingwallpaper",
     "url": "https://github.com/haydntrowell/dailybingwallpaper/",
-    "version": 2,
-    "version-name": "1.0.1"
+    "version": 3,
+    "version-name": "1.0.2"
 }
